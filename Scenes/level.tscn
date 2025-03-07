@@ -1,14 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=5 format=3 uid="uid://bkdjtp36jnfur"]
 
-[ext_resource type="PackedScene" uid="uid://dtxhpaffxfxgu" path="res://Scenes/fingers.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://dtxhpaffxfxgu" path="res://Scenes/fingersKynematic.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingersPhysics.tscn" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://biscj62u5vfcx" path="res://Scenes/guardrail.tscn" id="2_w7c3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5f4k"]
 
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="fingers" parent="." instance=ExtResource("1_2q6dc")]
-position = Vector2(-503, 327)
+[node name="fingersKinematic" parent="." instance=ExtResource("1_2q6dc")]
+position = Vector2(-299, 217)
+
+[node name="fingersPhysics" parent="." instance=ExtResource("1_k5f4k")]
+position = Vector2(18, -275)
 
 [node name="guardrail" parent="." instance=ExtResource("2_w7c3h")]
 position = Vector2(0, 450)
+
+[node name="guardrail2" parent="." instance=ExtResource("2_w7c3h")]
+position = Vector2(0, -131)
+
+[node name="leftBarrier" type="Node2D" parent="."]
+position = Vector2(-680, 0)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="leftBarrier"]
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftBarrier/RigidBody2D"]
+scale = Vector2(1, 55.44)
+shape = SubResource("RectangleShape2D_k5f4k")
+
+[node name="rightBarrier" type="Node2D" parent="."]
+position = Vector2(829, 0)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="rightBarrier"]
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightBarrier/RigidBody2D"]
+scale = Vector2(1, 55.44)
+shape = SubResource("RectangleShape2D_k5f4k")

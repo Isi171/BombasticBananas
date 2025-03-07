@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b51n4pq1b3e5w"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dyo8khv8idfc1" path="res://Materials/Frictionless.tres" id="1_g28yq"]
+[ext_resource type="Script" uid="uid://dmr8665cduscl" path="res://Scripts/Controller/MovementControllerForces.cs" id="1_pnwhw"]
+[ext_resource type="Texture2D" uid="uid://bfrdc78hvtslk" path="res://icon.svg" id="2_g28yq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0rc"]
+radius = 64.0
+height = 134.0
+
+[node name="Fingers2" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+physics_material_override = ExtResource("1_g28yq")
+lock_rotation = true
+script = ExtResource("1_pnwhw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_cd0rc")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_g28yq")

@@ -4,7 +4,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Scripts\Controller" />
     <Folder Include="Scripts\Model" />
     <Folder Include="Scripts\View" />
   </ItemGroup>
