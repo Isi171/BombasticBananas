@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=6 format=3 uid="uid://bkdjtp36jnfur"]
 
 [ext_resource type="PackedScene" uid="uid://dtxhpaffxfxgu" path="res://Scenes/fingersKynematic.tscn" id="1_2q6dc"]
+[ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingersPhysics.tscn" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://biscj62u5vfcx" path="res://Scenes/guardrail.tscn" id="2_w7c3h"]
 
@@ -9,6 +10,9 @@
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CarFrame" type="Sprite2D" parent="."]
+texture = ExtResource("1_81xng")
 
 [node name="fingersKinematic" parent="." instance=ExtResource("1_2q6dc")]
 position = Vector2(-299, 217)
@@ -23,7 +27,7 @@ position = Vector2(0, 450)
 position = Vector2(0, -131)
 
 [node name="leftBarrier" type="Node2D" parent="."]
-position = Vector2(-680, 0)
+position = Vector2(-840, 0)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="leftBarrier"]
 lock_rotation = true
@@ -34,7 +38,7 @@ scale = Vector2(1, 55.44)
 shape = SubResource("RectangleShape2D_k5f4k")
 
 [node name="rightBarrier" type="Node2D" parent="."]
-position = Vector2(829, 0)
+position = Vector2(904, 0)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="rightBarrier"]
 lock_rotation = true
