@@ -2,11 +2,11 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://dyo8khv8idfc1" path="res://Materials/Frictionless.tres" id="1_g28yq"]
 [ext_resource type="Script" uid="uid://dmr8665cduscl" path="res://Scripts/Controller/MovementControllerForces.cs" id="1_pnwhw"]
-[ext_resource type="Texture2D" uid="uid://bfrdc78hvtslk" path="res://icon.svg" id="2_g28yq"]
+[ext_resource type="Texture2D" uid="uid://bathksrh2tv50" path="res://Sprites/fingers.png" id="3_80m3m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0rc"]
-radius = 64.0
-height = 134.0
+radius = 116.0
+height = 364.0
 
 [node name="Fingers2" type="Node2D"]
 
@@ -19,4 +19,5 @@ script = ExtResource("1_pnwhw")
 shape = SubResource("CapsuleShape2D_cd0rc")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("2_g28yq")
+position = Vector2(213, 111)
+texture = ExtResource("3_80m3m")
