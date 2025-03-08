@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://biscj62u5vfcx"]
+[gd_scene load_steps=4 format=3 uid="uid://biscj62u5vfcx"]
 
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_eu1ut"]
 [ext_resource type="Texture2D" uid="uid://b04vjn55pfs3w" path="res://Sprites/guardRail.png" id="1_fgf03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q6dc"]
@@ -8,8 +9,10 @@ size = Vector2(3840, 201)
 [node name="guardrail" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 9.22337e+18
+gravity_scale = 0.0
 lock_rotation = true
-freeze = true
+script = ExtResource("1_eu1ut")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(0, -228)
