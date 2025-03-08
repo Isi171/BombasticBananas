@@ -10,9 +10,9 @@ height = 364.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80m3m"]
 
-[node name="fingersPhysics" type="RigidBody2D"]
-collision_layer = 3
-collision_mask = 3
+[node name="fingers" type="RigidBody2D"]
+collision_layer = 7
+collision_mask = 7
 physics_material_override = ExtResource("1_g28yq")
 lock_rotation = true
 script = ExtResource("1_pnwhw")
@@ -28,6 +28,8 @@ texture = ExtResource("3_80m3m")
 
 [node name="GroundChecker" type="Area2D" parent="."]
 position = Vector2(0, 186)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundChecker"]
 shape = SubResource("RectangleShape2D_80m3m")

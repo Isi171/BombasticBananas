@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bq4j7kyvic888" path="res://Sprites/mountains1.png" id="1_qak3t"]
 
 [node name="mountains" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
 mass = 9.22337e+18
 gravity_scale = 0.0
 script = ExtResource("1_4t1fn")

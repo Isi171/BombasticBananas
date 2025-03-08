@@ -18,6 +18,9 @@ namespace BombasticBananas.Scripts.Controller
         private bool isJumping;
         private bool isDescendingDuringJump;
 
+        private const double DescendColliderEnableTimer = 0.3;
+        private bool isDescendingBetweenLayers;
+
         public override void _Ready()
         {
             AddConstantForce(new Vector2(SlidingLeftForce, 0));
@@ -54,6 +57,21 @@ namespace BombasticBananas.Scripts.Controller
                     ApplyImpulse(new Vector2(MovementForce, 0));
                 }
             }
+
+            if (Input.IsActionJustPressed("Descend") && !isDescendingBetweenLayers)
+            {
+                isDescendingBetweenLayers = true;
+                SetCollisionLayerValue(3, false);
+                SetCollisionMaskValue(3, false);
+                GetTree().CreateTimer(DescendColliderEnableTimer).Timeout += ReEnableDescendCollision;
+            }
+        }
+
+        private void ReEnableDescendCollision()
+        {
+            isDescendingBetweenLayers = false;
+            SetCollisionLayerValue(3, true);
+            SetCollisionMaskValue(3, true);
         }
 
         public override void _IntegrateForces(PhysicsDirectBodyState2D state)
