@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdjgwkcdwsrtf"]
+
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_4t1fn"]
+[ext_resource type="Texture2D" uid="uid://bq4j7kyvic888" path="res://Sprites/mountains1.png" id="1_qak3t"]
+
+[node name="mountains" type="RigidBody2D"]
+mass = 9.22337e+18
+gravity_scale = 0.0
+script = ExtResource("1_4t1fn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-958, -286, -473, -444, -58, -318, 396, -390, 962, -287, 1446, -445, 1871, -318, 2316, -392, 2877, -287, 2868, -256, 2323, -359, 1872, -286, 1450, -417, 968, -262, 390, -371, -65, -294, -473, -423, -954, -263)
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qak3t")
+
+[node name="Sprite2Dextra" type="Sprite2D" parent="."]
+position = Vector2(1920, 0)
+texture = ExtResource("1_qak3t")

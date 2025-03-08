@@ -16,6 +16,8 @@ lock_rotation = true
 script = ExtResource("1_pnwhw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 159)
+scale = Vector2(0.0399989, 0.0799997)
 shape = SubResource("CapsuleShape2D_cd0rc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
