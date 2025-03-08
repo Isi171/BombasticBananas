@@ -16,6 +16,7 @@ collision_mask = 7
 physics_material_override = ExtResource("1_g28yq")
 lock_rotation = true
 script = ExtResource("1_pnwhw")
+metadata/_edit_horizontal_guides_ = [-193.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 159)

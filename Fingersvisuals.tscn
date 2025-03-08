@@ -1,22 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnrjaa3mo656w"]
+[gd_scene load_steps=4 format=3 uid="uid://dnrjaa3mo656w"]
 
 [ext_resource type="Texture2D" uid="uid://bathksrh2tv50" path="res://Sprites/fingers.png" id="1_cxod0"]
 
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_cxod0"]
+bone_index = 1
+bone2d_node = NodePath("Hand/Arm")
+target_nodepath = NodePath("../ArmTarget")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_2hnb4"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DLookAt_cxod0")
+
 [node name="Visuals" type="Node2D"]
 
+[node name="ArmTarget" type="Marker2D" parent="."]
+top_level = true
+position = Vector2(-1130, -2821)
+
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_2hnb4")
 
 [node name="Hand" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(-22, -33)
 rest = Transform2D(1, 0, 0, 1, -22, -33)
 
+[node name="Arm" type="Bone2D" parent="Skeleton2D/Hand"]
+position = Vector2(-190, -72)
+rotation = -1.24442
+scale = Vector2(0.999991, 0.999991)
+rest = Transform2D(1, 0, 0, 1, -190, -72)
+auto_calculate_length_and_angle = false
+length = 550.0
+bone_angle = -133.626
+metadata/_local_pose_override_enabled_ = true
+
 [node name="Index" type="Bone2D" parent="Skeleton2D/Hand"]
 position = Vector2(18, 33)
 rest = Transform2D(1, 0, 0, 1, 18, 33)
+auto_calculate_length_and_angle = false
+length = 200.0
+bone_angle = 63.0
 
 [node name="Fuck" type="Bone2D" parent="Skeleton2D/Hand"]
 position = Vector2(11, 35)
 rest = Transform2D(1, 0, 0, 1, 11, 35)
+auto_calculate_length_and_angle = false
+length = 220.0
+bone_angle = 85.0
+
+[node name="Arm" type="Polygon2D" parent="."]
+position = Vector2(-214, -108)
+rotation = 2.39459
+scale = Vector2(1.2, 3)
+offset = Vector2(-673, -391)
+texture = ExtResource("1_cxod0")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(670.427, 347.857, 711.053, 361.399, 726.188, 393.262, 726.188, 444.243, 727.781, 476.106, 726.984, 503.986, 728.578, 554.967, 721.408, 591.61, 692.732, 614.71, 659.275, 615.507, 636.175, 595.593, 624.226, 559.747, 618.65, 512.749, 620.243, 472.123, 620.243, 441.853, 619.446, 391.669, 636.175, 362.196)
+uv = PackedVector2Array(670.427, 347.857, 711.053, 361.399, 726.188, 393.262, 726.188, 444.243, 727.781, 476.106, 726.984, 503.986, 728.578, 554.967, 721.408, 591.61, 692.732, 614.71, 659.275, 615.507, 636.175, 595.593, 624.226, 559.747, 618.65, 512.749, 620.243, 472.123, 620.243, 441.853, 619.446, 391.669, 636.175, 362.196)
+bones = ["Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Arm", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Hand/Arm/ArmTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="Fuck" type="Polygon2D" parent="."]
 modulate = Color(0.907942, 0.907942, 0.907942, 1)
