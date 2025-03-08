@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnrjaa3mo656w"]
+
+[ext_resource type="Texture2D" uid="uid://bathksrh2tv50" path="res://Sprites/fingers.png" id="1_cxod0"]
+
+[node name="Visuals" type="Node2D"]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Hand" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-22, -33)
+rest = Transform2D(1, 0, 0, 1, -22, -33)
+
+[node name="Index" type="Bone2D" parent="Skeleton2D/Hand"]
+position = Vector2(18, 33)
+rest = Transform2D(1, 0, 0, 1, 18, 33)
+
+[node name="Fuck" type="Bone2D" parent="Skeleton2D/Hand"]
+position = Vector2(11, 35)
+rest = Transform2D(1, 0, 0, 1, 11, 35)
+
+[node name="Fuck" type="Polygon2D" parent="."]
+modulate = Color(0.907942, 0.907942, 0.907942, 1)
+scale = Vector2(1, 1.125)
+offset = Vector2(-673, -391)
+texture = ExtResource("1_cxod0")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(670.427, 347.857, 711.053, 361.399, 726.188, 393.262, 726.188, 444.243, 727.781, 476.106, 726.984, 503.986, 728.578, 554.967, 721.408, 591.61, 692.732, 614.71, 659.275, 615.507, 636.175, 595.593, 624.226, 559.747, 618.65, 512.749, 620.243, 472.123, 620.243, 441.853, 619.446, 391.669, 636.175, 362.196)
+uv = PackedVector2Array(670.427, 347.857, 711.053, 361.399, 726.188, 393.262, 726.188, 444.243, 727.781, 476.106, 726.984, 503.986, 728.578, 554.967, 721.408, 591.61, 692.732, 614.71, 659.275, 615.507, 636.175, 595.593, 624.226, 559.747, 618.65, 512.749, 620.243, 472.123, 620.243, 441.853, 619.446, 391.669, 636.175, 362.196)
+bones = ["Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Fuck", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+
+[node name="Hand" type="Polygon2D" parent="."]
+position = Vector2(-55, -40)
+offset = Vector2(-731, -182)
+texture = ExtResource("1_cxod0")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(548.192, 104.748, 530.919, 148.384, 541.829, 187.475, 687.283, 315.657, 740.919, 309.294, 756.374, 260.203, 745.465, 245.657, 768.192, 245.657, 793.647, 244.748, 811.829, 229.294, 812.738, 212.93, 807.283, 188.384, 780.919, 149.294, 630.01, 72.0208, 581.829, 79.2935)
+uv = PackedVector2Array(548.192, 104.748, 530.919, 148.384, 541.829, 187.475, 687.283, 315.657, 740.919, 309.294, 756.374, 260.203, 745.465, 245.657, 768.192, 245.657, 793.647, 244.748, 811.829, 229.294, 812.738, 212.93, 807.283, 188.384, 780.919, 149.294, 630.01, 72.0208, 581.829, 79.2935)
+bones = ["Hand", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Index" type="Polygon2D" parent="."]
+offset = Vector2(-784, -218)
+texture = ExtResource("1_cxod0")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(821.088, 403.785, 854.399, 431.303, 898.573, 422.613, 913.781, 375.542, 882.642, 313.989, 865.986, 281.401, 852.227, 247.366, 813.846, 180.743, 787.892, 175.621, 753.964, 194.705, 743.362, 226.512, 755.024, 250.898, 767.747, 298.609, 777.29, 317.693, 790.013, 344.2, 801.675, 370.706)
+uv = PackedVector2Array(821.088, 403.785, 854.399, 431.303, 898.573, 422.613, 913.781, 375.542, 882.642, 313.989, 865.986, 281.401, 852.227, 247.366, 813.846, 180.743, 787.892, 175.621, 753.964, 194.705, 743.362, 226.512, 755.024, 250.898, 767.747, 298.609, 777.29, 317.693, 790.013, 344.2, 801.675, 370.706)
+bones = ["Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hand/Index", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
