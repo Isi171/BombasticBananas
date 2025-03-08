@@ -20,7 +20,7 @@ script = ExtResource("1_oqgf2")
 texture = ExtResource("1_0f350")
 
 [node name="topBarrier" parent="." instance=ExtResource("3_oqgf2")]
-position = Vector2(0, -376)
+position = Vector2(0, -380)
 
 [node name="leftBarrier" parent="." instance=ExtResource("1_wqkje")]
 position = Vector2(808, -5)
@@ -63,7 +63,7 @@ offset_bottom = -212.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_754fn")
-text = "Bombastic Bananas"
+text = "Coming Home"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
