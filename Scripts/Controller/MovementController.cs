@@ -36,6 +36,7 @@ namespace BombasticBananas.Scripts.Controller
 		private Bone2D fuck;
 		private Node2D WalkingHand;
 		private Node2D FlyingHand;
+		private Tween tween;
 
 		public override void _Ready()
 		{
@@ -45,6 +46,8 @@ namespace BombasticBananas.Scripts.Controller
 			fuck = GetNode<Bone2D>("Visuals/Skeleton2D/Wrist/Hand/Fuck");
 			WalkingHand = GetNode<Node2D>("Visuals/Sprites/WalkingHand");
 			FlyingHand = GetNode<Node2D>("Visuals/Sprites/FlyingHand");
+			
+			tween = GetTree().CreateTween();
 		}
 
 		public override void _Process(double delta)
@@ -157,8 +160,10 @@ namespace BombasticBananas.Scripts.Controller
 				lastInput = RightFingerAction;
 				ApplyImpulse(new Vector2(MovementForce, 0));
 
-				index.RotationDegrees = IndexMaxAngle;
-				fuck.RotationDegrees = FuckMinAngle;
+				tween.Kill(); // Abort the previous animation
+				tween = CreateTween();
+				tween.Parallel().TweenProperty(index, "rotation_degrees", IndexMaxAngle, 0.1f);
+				tween.Parallel().TweenProperty(fuck, "rotation_degrees", FuckMinAngle, 0.1f);
 			}
 
 			if (Input.IsActionJustPressed(LeftFingerAction) && lastInput != LeftFingerAction)
@@ -166,8 +171,10 @@ namespace BombasticBananas.Scripts.Controller
 				lastInput = LeftFingerAction;
 				ApplyImpulse(new Vector2(MovementForce, 0));
 
-				index.RotationDegrees = IndexMinAngle;
-				fuck.RotationDegrees = FuckMaxAngle;
+				tween.Kill(); // Abort the previous animation
+				tween = CreateTween();
+				tween.Parallel().TweenProperty(index, "rotation_degrees", IndexMinAngle, 0.1f);
+				tween.Parallel().TweenProperty(fuck, "rotation_degrees", FuckMaxAngle, 0.1f);
 			}
 
 
