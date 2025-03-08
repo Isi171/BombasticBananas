@@ -31,7 +31,7 @@ position = Vector2(808, -5)
 position = Vector2(-786, 0)
 
 [node name="mountains" parent="." instance=ExtResource("3_0f350")]
-position = Vector2(0, 365)
+position = Vector2(0, 410)
 Speed = -200.0
 
 [node name="bushes" parent="." instance=ExtResource("4_8c0lf")]
@@ -39,7 +39,7 @@ position = Vector2(15, 570)
 Speed = -2800.0
 
 [node name="guardrail" parent="." instance=ExtResource("2_w7c3h")]
-position = Vector2(0, 235)
+position = Vector2(0, 339)
 Speed = -3200.0
 
 [node name="carFrame" type="Sprite2D" parent="."]

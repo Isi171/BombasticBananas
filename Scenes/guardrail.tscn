@@ -14,12 +14,14 @@ script = ExtResource("1_eu1ut")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -228)
+scale = Vector2(1, 0.8)
 texture = ExtResource("1_fgf03")
 
 [node name="Sprite2Dextra" type="Sprite2D" parent="."]
 position = Vector2(1920, -228)
+scale = Vector2(1, 0.8)
 texture = ExtResource("1_fgf03")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(960, 50.5)
+position = Vector2(960, 15)
 shape = SubResource("RectangleShape2D_2q6dc")
