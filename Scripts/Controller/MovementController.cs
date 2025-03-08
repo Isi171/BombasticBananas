@@ -19,6 +19,8 @@ namespace BombasticBananas.Scripts.Controller
         private bool isJumping;
         private bool isDescendingDuringJump;
 
+        private bool isFlying;
+
         private const double DescendColliderEnableTimer = 0.3;
         private bool isDescendingBetweenLayers;
 
@@ -64,11 +66,50 @@ namespace BombasticBananas.Scripts.Controller
             {
                 return true;
             }
-            
+
             return false;
         }
-        
+
         public override void _PhysicsProcess(double delta)
+        {
+            bool previousIsFlying = isFlying;
+            if (GlobalPosition.Y <= -300)
+            {
+                isFlying = true;
+            }
+            else
+            {
+                isFlying = false;
+            }
+
+            if (isFlying)
+            {
+                if (previousIsFlying == false)
+                {
+                    ConstantForce = Vector2.Zero;
+                    LinearVelocity = new Vector2(0, 0);
+                }
+
+                GravityScale = 0;
+                Fly();
+            }
+            else
+            {
+                if (previousIsFlying == true)
+                {
+                    AddConstantForce(new Vector2(SlidingLeftForce, 0));
+                }
+
+                GravityScale = 1;
+                WalkAndJump();
+            }
+        }
+
+        private void Fly()
+        {
+        }
+
+        private void WalkAndJump()
         {
             isTouchingGround = groundChecker.GetOverlappingBodies().Count > 0;
             isDescendingDuringJump = isJumping && LinearVelocity.Y < 0;
