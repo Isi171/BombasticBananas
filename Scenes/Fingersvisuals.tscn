@@ -87,7 +87,6 @@ uv = PackedVector2Array(104.291, 622.429, 651.716, 621.662, 926.579, 642.392, 94
 bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Arm", PackedFloat32Array(1, 1, 1, 1, 1, 1), "Wrist/Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
 
 [node name="WalkingHand" type="Node2D" parent="Sprites"]
-visible = false
 
 [node name="Fuck" type="Polygon2D" parent="Sprites/WalkingHand"]
 modulate = Color(0.907942, 0.907942, 0.907942, 1)
@@ -117,6 +116,7 @@ uv = PackedVector2Array(821.088, 403.785, 854.399, 431.303, 898.573, 422.613, 91
 bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Index", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Wrist/Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="FlyingHand" type="Node2D" parent="Sprites"]
+visible = false
 
 [node name="Hand" type="Polygon2D" parent="Sprites/FlyingHand"]
 position = Vector2(-190, -94)
