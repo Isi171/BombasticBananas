@@ -2,79 +2,83 @@ using Godot;
 
 namespace BombasticBananas.Scripts.Controller
 {
-    public partial class MovementController : CharacterBody2D
+    public partial class MovementController : RigidBody2D
     {
-        private const float Speed = 3000.0f;
-        private const float JumpVelocity = -400.0f;
+        private const float SlidingLeftForce = -300f;
+        private const float MaxSlidingLeftVelocity = -400f;
+        private const float MaxSlidingRightVelocity = 300f;
+        private const float JumpForce = -600f;
+        private const float MovementForce = 100f;
 
-        private const double InputTimer = 0.5;
-        private double currentTimer;
-
+        private const string RightFingerAction = "RightFinger";
+        private const string LeftFingerAction = "LeftFinger";
         private string lastInput;
+
+        private Area2D groundChecker;
+        private bool isJumping;
+        private bool isDescendingDuringJump;
+
+        private const double DescendColliderEnableTimer = 0.3;
+        private bool isDescendingBetweenLayers;
+
+        public override void _Ready()
+        {
+            AddConstantForce(new Vector2(SlidingLeftForce, 0));
+            groundChecker = GetNode<Area2D>("GroundChecker");
+        }
 
         public override void _PhysicsProcess(double delta)
         {
-            Vector2 velocity = Velocity;
+            bool isTouchingGround = groundChecker.GetOverlappingBodies().Count > 0;
+            isDescendingDuringJump = isJumping && LinearVelocity.Y < 0;
 
-            if (!IsOnFloor())
+            if (isDescendingDuringJump && isTouchingGround)
             {
-                velocity += GetGravity() * (float) delta;
+                isJumping = false;
+                isDescendingDuringJump = false;
             }
 
-            if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+            if (Input.IsActionJustPressed("Jump") && isTouchingGround && !isJumping)
             {
-                velocity.Y = JumpVelocity;
+                isJumping = true;
+                ApplyImpulse(new Vector2(0, JumpForce));
             }
 
-            if (Input.IsActionJustPressed("ui_right") && lastInput != "ui_right")
+            if (Input.IsActionJustPressed(RightFingerAction) && lastInput != RightFingerAction)
             {
-                lastInput = "ui_right";
-                velocity.X = Speed;
-            }
-            else if (Input.IsActionJustPressed("ui_left") && lastInput != "ui_left")
-            {
-                lastInput = "ui_left";
-                velocity.X = Speed;
+                lastInput = RightFingerAction;
+                ApplyImpulse(new Vector2(MovementForce, 0));
             }
             else
             {
-                velocity.X = Mathf.MoveToward(Velocity.X, -300, Speed);
+                if (Input.IsActionJustPressed(LeftFingerAction) && lastInput != LeftFingerAction)
+                {
+                    lastInput = LeftFingerAction;
+                    ApplyImpulse(new Vector2(MovementForce, 0));
+                }
             }
 
-            Velocity = velocity;
-            MoveAndSlide();
-
-
-            /*
-            Vector2 velocity = Velocity;
-
-            // Add the gravity.
-            if (!IsOnFloor())
+            if (Input.IsActionJustPressed("Descend") && !isDescendingBetweenLayers)
             {
-                velocity += GetGravity() * (float)delta;
+                isDescendingBetweenLayers = true;
+                SetCollisionLayerValue(3, false);
+                SetCollisionMaskValue(3, false);
+                GetTree().CreateTimer(DescendColliderEnableTimer).Timeout += ReEnableDescendCollision;
             }
+        }
 
-            // Handle Jump.
-            if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-            {
-                velocity.Y = JumpVelocity;
-            }
+        private void ReEnableDescendCollision()
+        {
+            isDescendingBetweenLayers = false;
+            SetCollisionLayerValue(3, true);
+            SetCollisionMaskValue(3, true);
+        }
 
-            // Get the input direction and handle the movement/deceleration.
-            // As good practice, you should replace UI actions with custom gameplay actions.
-            Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-            if (direction != Vector2.Zero)
-            {
-                velocity.X = direction.X * Speed;
-            }
-            else
-            {
-                velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-            }
-
-            Velocity = velocity;
-            MoveAndSlide();
-            */
+        public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+        {
+            state.LinearVelocity = new Vector2(
+                Mathf.Clamp(state.LinearVelocity.X, MaxSlidingLeftVelocity, MaxSlidingRightVelocity),
+                state.LinearVelocity.Y);
         }
     }
 }
