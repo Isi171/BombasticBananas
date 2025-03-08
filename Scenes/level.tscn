@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=12 format=3 uid="uid://bkdjtp36jnfur"]
 
 [ext_resource type="Texture2D" uid="uid://dbhbyoq5c0pgi" path="res://Sprites/sky.png" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ci6qpmx3egr2r" path="res://Scenes/bushes.tscn" id="4_8c0lf"]
 [ext_resource type="Theme" uid="uid://b47dpg67ygb3p" path="res://Fonts/titles.tres" id="8_754fn"]
 [ext_resource type="Theme" uid="uid://dtr7fnqreioqj" path="res://Fonts/text.tres" id="9_bvt00"]
+[ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingers.tscn" id="9_qxfql"]
 
 [node name="Scene" type="Node2D"]
 script = ExtResource("1_oqgf2")
@@ -42,6 +43,11 @@ Speed = -400.0
 
 [node name="carFrame" type="Sprite2D" parent="."]
 texture = ExtResource("1_81xng")
+
+[node name="fingers" parent="." instance=ExtResource("9_qxfql")]
+process_mode = 4
+visible = false
+position = Vector2(-150, -64)
 
 [node name="mainMenuUi" type="Control" parent="."]
 layout_mode = 3

@@ -4,7 +4,7 @@ namespace BombasticBananas.Scripts.Controller
 {
 	public partial class LevelStarter : Node
 	{
-		private PackedScene fingersScene;
+		private RigidBody2D fingers;
 		private Control mainMenuUi;
 
 		private bool isOnMainMenu;
@@ -12,7 +12,7 @@ namespace BombasticBananas.Scripts.Controller
 
 		public override void _Ready()
 		{
-			fingersScene = GD.Load<PackedScene>("res://Scenes/fingers.tscn");
+			fingers = GetNode<RigidBody2D>("fingers");
 			mainMenuUi = GetNode<Control>("mainMenuUi");
 			isOnMainMenu = true;
 		}
@@ -23,8 +23,8 @@ namespace BombasticBananas.Scripts.Controller
 			{
 				isOnMainMenu = false;
 				mainMenuUi.QueueFree();
-				Node fingers = fingersScene.Instantiate();
-				AddChild(fingers);
+				fingers.ProcessMode = ProcessModeEnum.Inherit;
+				fingers.Visible = true;
 			}
 		}
 	}
