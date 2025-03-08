@@ -38,6 +38,7 @@ shape = SubResource("RectangleShape2D_k5f4k")
 
 [node name="guardrail" parent="." instance=ExtResource("2_w7c3h")]
 position = Vector2(0, 235)
+Speed = -400.0
 
 [node name="CarFrame" type="Sprite2D" parent="."]
 texture = ExtResource("1_81xng")
