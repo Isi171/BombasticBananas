@@ -11,6 +11,8 @@ height = 364.0
 [node name="Fingers2" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 physics_material_override = ExtResource("1_g28yq")
 lock_rotation = true
 script = ExtResource("1_pnwhw")
