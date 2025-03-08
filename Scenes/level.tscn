@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=11 format=3 uid="uid://bkdjtp36jnfur"]
 
 [ext_resource type="Texture2D" uid="uid://dbhbyoq5c0pgi" path="res://Sprites/sky.png" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d4m453akmtb4p" path="res://Scenes/sideBarrier.tscn" id="1_wqkje"]
 [ext_resource type="PackedScene" uid="uid://biscj62u5vfcx" path="res://Scenes/guardrail.tscn" id="2_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://bdjgwkcdwsrtf" path="res://Scenes/mountains.tscn" id="3_0f350"]
+[ext_resource type="PackedScene" uid="uid://ht164w5fn0wb" path="res://Scenes/horizontalBarrier.tscn" id="3_oqgf2"]
 [ext_resource type="PackedScene" uid="uid://ci6qpmx3egr2r" path="res://Scenes/bushes.tscn" id="4_8c0lf"]
 [ext_resource type="Theme" uid="uid://b47dpg67ygb3p" path="res://Fonts/titles.tres" id="8_754fn"]
 [ext_resource type="Theme" uid="uid://dtr7fnqreioqj" path="res://Fonts/text.tres" id="9_bvt00"]
@@ -17,6 +18,9 @@ script = ExtResource("1_oqgf2")
 
 [node name="sky" type="Sprite2D" parent="."]
 texture = ExtResource("1_0f350")
+
+[node name="topBarrier" parent="." instance=ExtResource("3_oqgf2")]
+position = Vector2(0, -376)
 
 [node name="leftBarrier" parent="." instance=ExtResource("1_wqkje")]
 position = Vector2(808, -5)

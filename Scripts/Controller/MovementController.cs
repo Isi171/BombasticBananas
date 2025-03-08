@@ -29,7 +29,7 @@ namespace BombasticBananas.Scripts.Controller
         private const float FuckMaxAngle = -20;
         private const float FuckMinAngle = 40;
         
-        private const int StartFlyingAboveAltitude = -420;
+        private const int StartFlyingAboveAltitude = -350;
         private const int StopFlyingBelowAltitude = -100;
 
         private Bone2D index;
@@ -120,7 +120,17 @@ namespace BombasticBananas.Scripts.Controller
         
         private void Fly()
         {
-            
+            if (Input.IsActionJustPressed("FlyUp"))
+            {
+                ApplyImpulse(new Vector2(-300, -100));
+                return;
+            }
+
+            if (Input.IsActionJustPressed("FlyDown"))
+            {
+                ApplyImpulse(new Vector2(300, 100));
+                return;
+            }
         }
 
         private void WalkAndJump()
