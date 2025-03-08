@@ -28,7 +28,7 @@ modifications/1 = SubResource("SkeletonModification2DJiggle_tehrt")
 
 [node name="ArmTarget" type="Marker2D" parent="."]
 top_level = true
-position = Vector2(-819, -1717)
+position = Vector2(-800, -1700)
 
 [node name="FlyTarget" type="Marker2D" parent="."]
 top_level = true
@@ -82,7 +82,7 @@ modulate = Color(0.666569, 0.666569, 0.666569, 1)
 [node name="Arm" type="Polygon2D" parent="Sprites"]
 position = Vector2(-212, -105)
 rotation = 1.22348
-offset = Vector2(-843.885, -698.351)
+offset = Vector2(-887.697, -696.907)
 texture = ExtResource("1_cxod0")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(104.291, 622.429, 651.716, 621.662, 926.579, 642.392, 941.167, 759.861, 650.948, 790.572, 102.756, 789.037)

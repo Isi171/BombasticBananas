@@ -31,12 +31,15 @@ namespace BombasticBananas.Scripts.Controller
 		
 		private const int StartFlyingAboveAltitude = -320;
 		private const int StopFlyingBelowAltitude = 0;
+		private Vector2 CurrentDir;
+		private float WindForce = -500f;
 
 		private Bone2D index;
 		private Bone2D fuck;
 		private Node2D WalkingHand;
 		private Node2D FlyingHand;
 		private Tween tween;
+		private Tween tweenArm;
 		
 		private AudioStreamPlayer2D FingerTap;
 
@@ -51,6 +54,8 @@ namespace BombasticBananas.Scripts.Controller
 			FingerTap = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 			
 			tween = GetTree().CreateTween();
+			tweenArm = GetTree().CreateTween();
+			
 		}
 
 		public override void _Process(double delta)
@@ -104,6 +109,10 @@ namespace BombasticBananas.Scripts.Controller
 					SetAllCollisions(false);
 					FlyingHand.Visible = true;
 					WalkingHand.Visible = false;
+					
+					tweenArm.Kill(); 
+					tweenArm = CreateTween();
+					tweenArm.TweenProperty(GetNode<Marker2D>("Visuals/ArmTarget"), "global_position", new Vector2(-1600,-1000), 0.5f);
 				}
 
 				GravityScale = 0;
@@ -117,6 +126,10 @@ namespace BombasticBananas.Scripts.Controller
 					SetAllCollisions(true);
 					FlyingHand.Visible = false;
 					WalkingHand.Visible = true;
+					
+					tweenArm.Kill(); 
+					tweenArm = CreateTween();
+					tweenArm.TweenProperty(GetNode<Marker2D>("Visuals/ArmTarget"), "global_position", new Vector2(-800,-1700), 0.5f);
 				}
 
 				GravityScale = 1;
@@ -134,17 +147,12 @@ namespace BombasticBananas.Scripts.Controller
 		
 		private void Fly()
 		{
-			if (Input.IsActionJustPressed("FlyUp"))
-			{
-				ApplyImpulse(new Vector2(-300, -100));
-				return;
-			}
-
-			if (Input.IsActionJustPressed("FlyDown"))
-			{
-				ApplyImpulse(new Vector2(300, 100));
-				return;
-			}
+			CurrentDir = Input.GetVector("FlyLeft", "FlyRight", "FlyUp", "FlyDown");
+			float sail = CurrentDir.Y * WindForce;
+			Vector2 ModifiedForce = new Vector2(CurrentDir.X * 300 - Mathf.Abs(sail) -50, - sail);
+			
+			ApplyForce(ModifiedForce);
+			return;
 		}
 
 		private void WalkAndJump()
