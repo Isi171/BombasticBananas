@@ -41,6 +41,7 @@ namespace BombasticBananas.Scripts.Controller
             if (Input.IsActionJustPressed("Jump") && isTouchingGround && !isJumping)
             {
                 isJumping = true;
+                LinearVelocity = new Vector2(LinearVelocity.X, 0);
                 ApplyImpulse(new Vector2(0, JumpForce));
             }
 
