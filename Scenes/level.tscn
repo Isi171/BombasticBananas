@@ -2,39 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingersPhysics.tscn" id="1_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://d4m453akmtb4p" path="res://Scenes/sideBarrier.tscn" id="1_wqkje"]
 [ext_resource type="PackedScene" uid="uid://biscj62u5vfcx" path="res://Scenes/guardrail.tscn" id="2_w7c3h"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5f4k"]
 
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="leftBarrier" type="Node2D" parent="."]
+[node name="leftBarrier" parent="." instance=ExtResource("1_wqkje")]
+position = Vector2(874, 0)
+
+[node name="rightBarrier" parent="." instance=ExtResource("1_wqkje")]
 position = Vector2(-840, 0)
-
-[node name="RigidBody2D" type="RigidBody2D" parent="leftBarrier"]
-collision_layer = 2
-collision_mask = 2
-lock_rotation = true
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftBarrier/RigidBody2D"]
-scale = Vector2(1, 55.44)
-shape = SubResource("RectangleShape2D_k5f4k")
-
-[node name="rightBarrier" type="Node2D" parent="."]
-position = Vector2(904, 0)
-
-[node name="RigidBody2D" type="RigidBody2D" parent="rightBarrier"]
-collision_layer = 2
-collision_mask = 2
-lock_rotation = true
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rightBarrier/RigidBody2D"]
-scale = Vector2(1, 55.44)
-shape = SubResource("RectangleShape2D_k5f4k")
 
 [node name="guardrail" parent="." instance=ExtResource("2_w7c3h")]
 position = Vector2(0, 235)
