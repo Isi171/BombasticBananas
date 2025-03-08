@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b51n4pq1b3e5w"]
+[gd_scene load_steps=6 format=3 uid="uid://b51n4pq1b3e5w"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dyo8khv8idfc1" path="res://Materials/Frictionless.tres" id="1_g28yq"]
 [ext_resource type="Script" uid="uid://dmr8665cduscl" path="res://Scripts/Controller/MovementControllerForces.cs" id="1_pnwhw"]
@@ -7,6 +7,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0rc"]
 radius = 116.0
 height = 364.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80m3m"]
 
 [node name="fingersPhysics" type="RigidBody2D"]
 collision_layer = 3
@@ -23,3 +25,9 @@ shape = SubResource("CapsuleShape2D_cd0rc")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(213, 111)
 texture = ExtResource("3_80m3m")
+
+[node name="GroundChecker" type="Area2D" parent="."]
+position = Vector2(0, 186)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundChecker"]
+shape = SubResource("RectangleShape2D_80m3m")

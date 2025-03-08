@@ -14,15 +14,30 @@ namespace BombasticBananas.Scripts.Controller
         private const string LeftFingerAction = "LeftFinger";
         private string lastInput;
 
+        private Area2D groundChecker;
+        private bool isJumping;
+        private bool isDescendingDuringJump;
+
         public override void _Ready()
         {
             AddConstantForce(new Vector2(SlidingLeftForce, 0));
+            groundChecker = GetNode<Area2D>("GroundChecker");
         }
 
         public override void _PhysicsProcess(double delta)
         {
-            if (Input.IsActionJustPressed("Jump"))
+            bool isTouchingGround = groundChecker.GetOverlappingBodies().Count > 0;
+            isDescendingDuringJump = isJumping && LinearVelocity.Y < 0;
+
+            if (isDescendingDuringJump && isTouchingGround)
             {
+                isJumping = false;
+                isDescendingDuringJump = false;
+            }
+
+            if (Input.IsActionJustPressed("Jump") && isTouchingGround && !isJumping)
+            {
+                isJumping = true;
                 ApplyImpulse(new Vector2(0, JumpForce));
             }
 
