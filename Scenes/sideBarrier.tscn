@@ -9,5 +9,6 @@ lock_rotation = true
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.0300423
 scale = Vector2(1, 55.44)
 shape = SubResource("RectangleShape2D_k5f4k")

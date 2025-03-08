@@ -22,13 +22,16 @@ script = ExtResource("1_oqgf2")
 texture = ExtResource("1_0f350")
 
 [node name="topBarrier" parent="." instance=ExtResource("3_oqgf2")]
-position = Vector2(0, -380)
+position = Vector2(-4, -245)
+rotation = -0.0262603
 
 [node name="leftBarrier" parent="." instance=ExtResource("1_wqkje")]
 position = Vector2(808, -5)
+rotation = -0.0233104
 
 [node name="rightBarrier" parent="." instance=ExtResource("1_wqkje")]
 position = Vector2(-786, 0)
+rotation = 0.158326
 
 [node name="mountains" parent="." instance=ExtResource("3_0f350")]
 position = Vector2(0, 410)

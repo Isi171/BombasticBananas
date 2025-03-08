@@ -29,8 +29,8 @@ namespace BombasticBananas.Scripts.Controller
 		private const float FuckMaxAngle = -20;
 		private const float FuckMinAngle = 40;
 		
-		private const int StartFlyingAboveAltitude = -350;
-		private const int StopFlyingBelowAltitude = -100;
+		private const int StartFlyingAboveAltitude = -320;
+		private const int StopFlyingBelowAltitude = 0;
 
 		private Bone2D index;
 		private Bone2D fuck;
@@ -80,11 +80,11 @@ namespace BombasticBananas.Scripts.Controller
 		public override void _PhysicsProcess(double delta)
 		{
 			bool previousIsFlying = isFlying;
-			if (GlobalPosition.Y <= StartFlyingAboveAltitude && !isFlying)
+			if (Position.Y <= StartFlyingAboveAltitude && !isFlying)
 			{
 				isFlying = true;
 			}
-			else if (GlobalPosition.Y > StopFlyingBelowAltitude && isFlying)
+			else if (Position.Y > StopFlyingBelowAltitude && isFlying)
 			{
 				isFlying = false;
 			}

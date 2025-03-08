@@ -122,7 +122,7 @@ bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 visible = false
 
 [node name="Hand" type="Polygon2D" parent="Sprites/FlyingHand"]
-position = Vector2(-190, -94)
+position = Vector2(-182, -68)
 offset = Vector2(-1122, -479)
 texture = ExtResource("1_cxod0")
 skeleton = NodePath("../../../Skeleton2D")
