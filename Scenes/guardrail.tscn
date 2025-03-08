@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b04vjn55pfs3w" path="res://Sprites/guardRail.png" id="1_fgf03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q6dc"]
-size = Vector2(1920, 201)
+size = Vector2(3840, 201)
 
 [node name="guardrail" type="Node2D"]
 
@@ -15,6 +15,10 @@ freeze = true
 position = Vector2(0, -228)
 texture = ExtResource("1_fgf03")
 
+[node name="Sprite2Dextra" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(1920, -228)
+texture = ExtResource("1_fgf03")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, 50.5)
+position = Vector2(960, 50.5)
 shape = SubResource("RectangleShape2D_2q6dc")
