@@ -120,7 +120,6 @@ visible = false
 
 [node name="Hand" type="Polygon2D" parent="Sprites/FlyingHand"]
 position = Vector2(-190, -94)
-rotation = 0.328122
 offset = Vector2(-1122, -479)
 texture = ExtResource("1_cxod0")
 skeleton = NodePath("../../../Skeleton2D")
