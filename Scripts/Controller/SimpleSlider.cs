@@ -1,27 +1,30 @@
 using Godot;
 
-public partial class SimpleSlider : RigidBody2D
+namespace BombasticBananas.Scripts.Controller
 {
-    [Export]
-    private float Speed { get; set; }
+    public partial class SimpleSlider : RigidBody2D
+    {
+        [Export]
+        private float Speed { get; set; }
     
-    private Vector2 originalPosition;
+        private Vector2 originalPosition;
 
-    public override void _Ready()
-    {
-        originalPosition = GlobalPosition;
-    }
-
-    public override void _Process(double delta)
-    {
-        if (GlobalPosition.X <= -1920)
+        public override void _Ready()
         {
-            GlobalPosition = originalPosition;
+            originalPosition = GlobalPosition;
         }
-    }
 
-    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
-    {
-        state.LinearVelocity = new Vector2(Speed, 0);
+        public override void _Process(double delta)
+        {
+            if (GlobalPosition.X <= -1920)
+            {
+                GlobalPosition = originalPosition;
+            }
+        }
+
+        public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+        {
+            state.LinearVelocity = new Vector2(Speed, 0);
+        }
     }
 }
