@@ -2,7 +2,7 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://dyo8khv8idfc1" path="res://Materials/Frictionless.tres" id="1_g28yq"]
 [ext_resource type="Script" uid="uid://dmr8665cduscl" path="res://Scripts/Controller/MovementController.cs" id="1_pnwhw"]
-[ext_resource type="PackedScene" uid="uid://dnrjaa3mo656w" path="res://Fingersvisuals.tscn" id="4_nggkc"]
+[ext_resource type="PackedScene" uid="uid://dnrjaa3mo656w" path="res://Scenes/Fingersvisuals.tscn" id="4_nggkc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0rc"]
 radius = 116.0
