@@ -15,6 +15,7 @@ namespace BombasticBananas.Scripts.Controller
         private string lastInput;
 
         private Area2D groundChecker;
+        private bool isTouchingGround;
         private bool isJumping;
         private bool isDescendingDuringJump;
 
@@ -37,22 +38,45 @@ namespace BombasticBananas.Scripts.Controller
             fuck = GetNode<Bone2D>("Visuals/Skeleton2D/Hand/Fuck");
         }
 
+        public override void _Process(double delta)
+        {
+            if (CanJump())
+            {
+                isJumping = true;
+                LinearVelocity = new Vector2(LinearVelocity.X, 0);
+                ApplyImpulse(new Vector2(0, JumpForce));
+            }
+        }
+
+        private bool CanJump()
+        {
+            if (!isTouchingGround)
+            {
+                return false;
+            }
+
+            if (isJumping)
+            {
+                return false;
+            }
+
+            if (Input.IsActionJustPressed("Jump"))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+        
         public override void _PhysicsProcess(double delta)
         {
-            bool isTouchingGround = groundChecker.GetOverlappingBodies().Count > 0;
+            isTouchingGround = groundChecker.GetOverlappingBodies().Count > 0;
             isDescendingDuringJump = isJumping && LinearVelocity.Y < 0;
 
             if (isDescendingDuringJump && isTouchingGround)
             {
                 isJumping = false;
                 isDescendingDuringJump = false;
-            }
-
-            if (Input.IsActionJustPressed("Jump") && isTouchingGround && !isJumping)
-            {
-                isJumping = true;
-                LinearVelocity = new Vector2(LinearVelocity.X, 0);
-                ApplyImpulse(new Vector2(0, JumpForce));
             }
 
             if (Input.IsActionJustPressed(RightFingerAction) && lastInput != RightFingerAction)
