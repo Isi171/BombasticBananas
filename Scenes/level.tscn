@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=13 format=3 uid="uid://bkdjtp36jnfur"]
 
 [ext_resource type="Texture2D" uid="uid://dbhbyoq5c0pgi" path="res://Sprites/sky.png" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://b47dpg67ygb3p" path="res://Fonts/titles.tres" id="8_754fn"]
 [ext_resource type="Theme" uid="uid://dtr7fnqreioqj" path="res://Fonts/text.tres" id="9_bvt00"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingers.tscn" id="9_qxfql"]
+[ext_resource type="AudioStream" uid="uid://cyeq2wxwxqg4e" path="res://Sounds/Coconut Mall - Mario Kart Wii OST.mp3" id="12_ha31o"]
 
 [node name="Scene" type="Node2D"]
 script = ExtResource("1_oqgf2")
@@ -152,3 +153,7 @@ text = "Press any key to start"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_ha31o")
+autoplay = true

@@ -61,6 +61,7 @@ rest = Transform2D(0.920567, -0.390608, 0.390608, 0.920567, 203.031, -7.93465)
 
 [node name="Index" type="Bone2D" parent="Skeleton2D/Wrist/Hand"]
 position = Vector2(18, 33)
+rotation = -0.0832907
 rest = Transform2D(1, 0, 0, 1, 18, 33)
 auto_calculate_length_and_angle = false
 length = 200.0
@@ -68,6 +69,8 @@ bone_angle = 63.0
 
 [node name="Fuck" type="Bone2D" parent="Skeleton2D/Wrist/Hand"]
 position = Vector2(11, 35)
+rotation = 0.304056
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 11, 35)
 auto_calculate_length_and_angle = false
 length = 220.0
@@ -89,7 +92,7 @@ bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Arm", PackedFloat
 [node name="WalkingHand" type="Node2D" parent="Sprites"]
 
 [node name="Fuck" type="Polygon2D" parent="Sprites/WalkingHand"]
-modulate = Color(0.907942, 0.907942, 0.907942, 1)
+modulate = Color(0.877616, 0.877616, 0.877616, 1)
 offset = Vector2(-673, -391)
 texture = ExtResource("1_cxod0")
 skeleton = NodePath("../../../Skeleton2D")

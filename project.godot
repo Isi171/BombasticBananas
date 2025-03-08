@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="BombasticBananas"
+config/name="Coming Home"
 run/main_scene="uid://bkdjtp36jnfur"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://d3op542t68f8d"
 
 [display]
 
