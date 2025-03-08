@@ -84,10 +84,11 @@ namespace BombasticBananas.Scripts.Controller
 
             if (isFlying)
             {
-                if (previousIsFlying == false)
+                if (!previousIsFlying)
                 {
                     ConstantForce = Vector2.Zero;
                     LinearVelocity = new Vector2(0, 0);
+                    SetAllCollisions(false);
                 }
 
                 GravityScale = 0;
@@ -95,9 +96,10 @@ namespace BombasticBananas.Scripts.Controller
             }
             else
             {
-                if (previousIsFlying == true)
+                if (previousIsFlying)
                 {
                     AddConstantForce(new Vector2(SlidingLeftForce, 0));
+                    SetAllCollisions(true);
                 }
 
                 GravityScale = 1;
@@ -105,8 +107,17 @@ namespace BombasticBananas.Scripts.Controller
             }
         }
 
+        private void SetAllCollisions(bool value)
+        {
+            SetCollisionLayerValue(1, value);
+            SetCollisionMaskValue(1, value);
+            SetCollisionLayerValue(3, value);
+            SetCollisionMaskValue(3, value);
+        }
+        
         private void Fly()
         {
+            
         }
 
         private void WalkAndJump()
