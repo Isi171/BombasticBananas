@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=6 format=3 uid="uid://bkdjtp36jnfur"]
 
+[ext_resource type="Texture2D" uid="uid://dbhbyoq5c0pgi" path="res://Sprites/sky.png" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingersPhysics.tscn" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://d4m453akmtb4p" path="res://Scenes/sideBarrier.tscn" id="1_wqkje"]
@@ -8,6 +9,9 @@
 [node name="Scene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="sky" type="Sprite2D" parent="."]
+texture = ExtResource("1_0f350")
 
 [node name="leftBarrier" parent="." instance=ExtResource("1_wqkje")]
 position = Vector2(874, 0)
@@ -19,7 +23,7 @@ position = Vector2(-840, 0)
 position = Vector2(0, 235)
 Speed = -400.0
 
-[node name="CarFrame" type="Sprite2D" parent="."]
+[node name="carFrame" type="Sprite2D" parent="."]
 texture = ExtResource("1_81xng")
 
 [node name="fingersPhysics" parent="." instance=ExtResource("1_k5f4k")]
