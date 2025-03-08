@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b51n4pq1b3e5w"]
+[gd_scene load_steps=9 format=3 uid="uid://b51n4pq1b3e5w"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dyo8khv8idfc1" path="res://Materials/Frictionless.tres" id="1_g28yq"]
 [ext_resource type="Script" uid="uid://dmr8665cduscl" path="res://Scripts/Controller/MovementController.cs" id="1_pnwhw"]
+[ext_resource type="AudioStream" uid="uid://cqry0kk8sw32h" path="res://Sounds/tap1.mp3" id="4_cpiwb"]
 [ext_resource type="PackedScene" uid="uid://dnrjaa3mo656w" path="res://Scenes/Fingersvisuals.tscn" id="4_nggkc"]
+[ext_resource type="AudioStream" uid="uid://dk0skkbowypwr" path="res://Sounds/tap2.mp3" id="5_5se3o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0rc"]
 radius = 116.0
 height = 364.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80m3m"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_buuw7"]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("4_cpiwb")
+stream_1/stream = ExtResource("5_5se3o")
 
 [node name="fingers" type="RigidBody2D"]
 collision_layer = 7
@@ -32,3 +40,6 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_80m3m")
 
 [node name="Visuals" parent="." instance=ExtResource("4_nggkc")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_buuw7")

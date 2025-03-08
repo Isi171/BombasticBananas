@@ -37,6 +37,8 @@ namespace BombasticBananas.Scripts.Controller
 		private Node2D WalkingHand;
 		private Node2D FlyingHand;
 		private Tween tween;
+		
+		private AudioStreamPlayer2D FingerTap;
 
 		public override void _Ready()
 		{
@@ -46,6 +48,7 @@ namespace BombasticBananas.Scripts.Controller
 			fuck = GetNode<Bone2D>("Visuals/Skeleton2D/Wrist/Hand/Fuck");
 			WalkingHand = GetNode<Node2D>("Visuals/Sprites/WalkingHand");
 			FlyingHand = GetNode<Node2D>("Visuals/Sprites/FlyingHand");
+			FingerTap = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 			
 			tween = GetTree().CreateTween();
 		}
@@ -159,6 +162,7 @@ namespace BombasticBananas.Scripts.Controller
 			{
 				lastInput = RightFingerAction;
 				ApplyImpulse(new Vector2(MovementForce, 0));
+				FingerTap.Play();
 
 				tween.Kill(); // Abort the previous animation
 				tween = CreateTween();
@@ -170,6 +174,7 @@ namespace BombasticBananas.Scripts.Controller
 			{
 				lastInput = LeftFingerAction;
 				ApplyImpulse(new Vector2(MovementForce, 0));
+				FingerTap.Play();
 
 				tween.Kill(); // Abort the previous animation
 				tween = CreateTween();
