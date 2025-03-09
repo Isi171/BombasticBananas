@@ -7,7 +7,7 @@ namespace BombasticBananas.Scripts
 		private const float SlidingLeftForce = -300f;
 		private const float MaxSlidingLeftVelocity = -400f;
 		private const float MaxSlidingRightVelocity = 300f;
-		private const float JumpForce = -600f;
+		private const float JumpForce = -700f;
 		private const float MovementForce = 100f;
 
 		private const string RightFingerAction = "RightFinger";
@@ -29,8 +29,8 @@ namespace BombasticBananas.Scripts
 		private const float FuckMaxAngle = -20;
 		private const float FuckMinAngle = 40;
 		
-		private const int StartFlyingAboveAltitude = -320;
-		private const int StopFlyingBelowAltitude = 0;
+		private const int StartFlyingAboveAltitude = -300;
+		private const int StopFlyingBelowAltitude = 70;
 		private Vector2 currentDir;
 		private float windForce = -500f;
 		private Marker2D flyHandTarget;
