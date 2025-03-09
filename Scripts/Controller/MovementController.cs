@@ -31,23 +31,23 @@ namespace BombasticBananas.Scripts.Controller
 		
 		private const int StartFlyingAboveAltitude = -320;
 		private const int StopFlyingBelowAltitude = 0;
-		private Vector2 CurrentDir;
-		private float WindForce = -500f;
-		private Marker2D FlyHandTarget;
-		private Control FlyUI;
-		private bool TutorialShown = false;
+		private Vector2 currentDir;
+		private float windForce = -500f;
+		private Marker2D flyHandTarget;
+		private Control flyUi;
+		private bool tutorialShown = false;
 
 		private Bone2D index;
 		private Bone2D fuck;
-		private Node2D WalkingHand;
-		private Node2D FlyingHand;
+		private Node2D walkingHand;
+		private Node2D flyingHand;
 		private Tween tween;
 		private Tween tweenArm;
 		private Tween tweenSound;
-		private Tween tweenUI;
+		private Tween tweenUi;
 		
-		private AudioStreamPlayer2D FingerTap;
-		private AudioStreamPlayer2D WindSound;
+		private AudioStreamPlayer2D fingerTap;
+		private AudioStreamPlayer2D windSound;
 
 		public override void _Ready()
 		{
@@ -55,17 +55,17 @@ namespace BombasticBananas.Scripts.Controller
 			groundChecker = GetNode<Area2D>("GroundChecker");
 			index = GetNode<Bone2D>("Visuals/Skeleton2D/Wrist/Hand/Index");
 			fuck = GetNode<Bone2D>("Visuals/Skeleton2D/Wrist/Hand/Fuck");
-			WalkingHand = GetNode<Node2D>("Visuals/Sprites/WalkingHand");
-			FlyingHand = GetNode<Node2D>("Visuals/Sprites/FlyingHand");
-			FingerTap = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
-			WindSound = GetNode<AudioStreamPlayer2D>("FlySounds");
-			FlyHandTarget = GetNode<Marker2D>("Visuals/FlyTarget");
-			FlyUI = GetNode<Control>("../Tutorial/Fly");
+			walkingHand = GetNode<Node2D>("Visuals/Sprites/WalkingHand");
+			flyingHand = GetNode<Node2D>("Visuals/Sprites/FlyingHand");
+			fingerTap = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+			windSound = GetNode<AudioStreamPlayer2D>("FlySounds");
+			flyHandTarget = GetNode<Marker2D>("Visuals/FlyTarget");
+			flyUi = GetNode<Control>("../Tutorial/Fly");
 			
 			tween = GetTree().CreateTween();
 			tweenArm = GetTree().CreateTween();
 			tweenSound = GetTree().CreateTween();
-			tweenUI = GetTree().CreateTween();
+			tweenUi = GetTree().CreateTween();
 			
 		}
 
@@ -118,8 +118,8 @@ namespace BombasticBananas.Scripts.Controller
 					ConstantForce = Vector2.Zero;
 					LinearVelocity = new Vector2(0, 0);
 					SetAllCollisions(false);
-					FlyingHand.Visible = true;
-					WalkingHand.Visible = false;
+					flyingHand.Visible = true;
+					walkingHand.Visible = false;
 					
 					tweenArm.Kill(); 
 					tweenArm = CreateTween();
@@ -127,15 +127,15 @@ namespace BombasticBananas.Scripts.Controller
 					
 					tweenSound.Kill(); 
 					tweenSound = CreateTween();
-					tweenSound.TweenProperty(WindSound, "volume_db", 0, 0.5f);
+					tweenSound.TweenProperty(windSound, "volume_db", 0, 0.5f);
 					
-					if (!TutorialShown)
+					if (!tutorialShown)
 					{
-						TutorialShown = true;
-						tweenUI = CreateTween();
-						tweenUI.TweenProperty(FlyUI, "modulate", new Color(1,1,1,1), .5f);
-						tweenUI.TweenInterval(5f);
-						tweenUI.TweenProperty(FlyUI, "modulate", new Color(1,1,1,0), 1.5f);
+						tutorialShown = true;
+						tweenUi = CreateTween();
+						tweenUi.TweenProperty(flyUi, "modulate", new Color(1,1,1,1), .5f);
+						tweenUi.TweenInterval(5f);
+						tweenUi.TweenProperty(flyUi, "modulate", new Color(1,1,1,0), 1.5f);
 					}
 				}
 
@@ -148,8 +148,8 @@ namespace BombasticBananas.Scripts.Controller
 				{
 					AddConstantForce(new Vector2(SlidingLeftForce, 0));
 					SetAllCollisions(true);
-					FlyingHand.Visible = false;
-					WalkingHand.Visible = true;
+					flyingHand.Visible = false;
+					walkingHand.Visible = true;
 					
 					tweenArm.Kill(); 
 					tweenArm = CreateTween();
@@ -157,8 +157,8 @@ namespace BombasticBananas.Scripts.Controller
 					
 					tweenSound.Kill(); 
 					tweenSound = CreateTween();
-					tweenSound.TweenProperty(WindSound, "volume_db", -10, 2f);
-					tweenSound.TweenProperty(WindSound, "pitch_scale", 1.0, 1f);
+					tweenSound.TweenProperty(windSound, "volume_db", -10, 2f);
+					tweenSound.TweenProperty(windSound, "pitch_scale", 1.0, 1f);
 				}
 
 				GravityScale = 1;
@@ -177,16 +177,16 @@ namespace BombasticBananas.Scripts.Controller
 		private void Fly()
 		{
 			//movement
-			CurrentDir = Input.GetVector("FlyLeft", "FlyRight", "FlyUp", "FlyDown");
-			float sail = CurrentDir.Y * WindForce;
-			Vector2 ModifiedForce = new Vector2(CurrentDir.X * 300 - Mathf.Abs(sail) -50, - sail);
-			ApplyForce(ModifiedForce);
+			currentDir = Input.GetVector("FlyLeft", "FlyRight", "FlyUp", "FlyDown");
+			float sail = currentDir.Y * windForce;
+			Vector2 modifiedForce = new Vector2(currentDir.X * 300 - Mathf.Abs(sail) -50, - sail);
+			ApplyForce(modifiedForce);
 			
 			//Animation
-			FlyHandTarget.Position = new Vector2(FlyHandTarget.Position.X, CurrentDir.Y * 500 - 80);
+			flyHandTarget.Position = new Vector2(flyHandTarget.Position.X, currentDir.Y * 500 - 80);
 			
 			//Audio
-			WindSound.PitchScale = 1.0f + CurrentDir.Y * -0.5f;
+			windSound.PitchScale = 1.0f + currentDir.Y * -0.5f;
 			return;
 		}
 
@@ -205,7 +205,7 @@ namespace BombasticBananas.Scripts.Controller
 			{
 				lastInput = RightFingerAction;
 				ApplyImpulse(new Vector2(MovementForce, 0));
-				FingerTap.Play();
+				fingerTap.Play();
 
 				tween.Kill(); // Abort the previous animation
 				tween = CreateTween();
@@ -217,7 +217,7 @@ namespace BombasticBananas.Scripts.Controller
 			{
 				lastInput = LeftFingerAction;
 				ApplyImpulse(new Vector2(MovementForce, 0));
-				FingerTap.Play();
+				fingerTap.Play();
 
 				tween.Kill(); // Abort the previous animation
 				tween = CreateTween();

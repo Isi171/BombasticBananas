@@ -6,8 +6,8 @@ namespace BombasticBananas.Scripts.Controller
     {
         private RigidBody2D fingers;
         private Control mainMenuUi;
-        private Control RunUI;
-        private Control JumpUI;
+        private Control runUi;
+        private Control jumpUi;
 
         private bool isOnMainMenu;
 
@@ -15,8 +15,8 @@ namespace BombasticBananas.Scripts.Controller
         {
             fingers = GetNode<RigidBody2D>("fingers");
             mainMenuUi = GetNode<Control>("mainMenuUi");
-            RunUI = GetNode<Control>("Tutorial/Run");
-            JumpUI = GetNode<Control>("Tutorial/Jump");
+            runUi = GetNode<Control>("Tutorial/Run");
+            jumpUi = GetNode<Control>("Tutorial/Jump");
             isOnMainMenu = true;
         }
 
@@ -29,14 +29,14 @@ namespace BombasticBananas.Scripts.Controller
                 fingers.ProcessMode = ProcessModeEnum.Inherit;
                 fingers.Visible = true;
 
-                Tween tweenUI = GetTree().CreateTween();
-                tweenUI.TweenProperty(RunUI, "modulate", new Color(1, 1, 1, 1), .5f);
-                tweenUI.TweenInterval(4f);
-                tweenUI.TweenProperty(RunUI, "modulate", new Color(1, 1, 1, 0), 1.5f);
-                tweenUI.TweenInterval(0.5f);
-                tweenUI.TweenProperty(JumpUI, "modulate", new Color(1, 1, 1, 1), .5f);
-                tweenUI.TweenInterval(5f);
-                tweenUI.TweenProperty(JumpUI, "modulate", new Color(1, 1, 1, 0), 1.5f);
+                Tween tweenUi = GetTree().CreateTween();
+                tweenUi.TweenProperty(runUi, "modulate", new Color(1, 1, 1, 1), .5f);
+                tweenUi.TweenInterval(4f);
+                tweenUi.TweenProperty(runUi, "modulate", new Color(1, 1, 1, 0), 1.5f);
+                tweenUi.TweenInterval(0.5f);
+                tweenUi.TweenProperty(jumpUi, "modulate", new Color(1, 1, 1, 1), .5f);
+                tweenUi.TweenInterval(5f);
+                tweenUi.TweenProperty(jumpUi, "modulate", new Color(1, 1, 1, 0), 1.5f);
             }
         }
     }
