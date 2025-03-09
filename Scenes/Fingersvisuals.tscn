@@ -104,12 +104,12 @@ modulate = Color(0.666569, 0.666569, 0.666569, 1)
 [node name="Arm" type="Polygon2D" parent="Sprites"]
 position = Vector2(-212, -105)
 rotation = 1.22348
-offset = Vector2(-887.697, -696.907)
+offset = Vector2(-1800.92, -744.165)
 texture = ExtResource("1_cxod0")
 skeleton = NodePath("../../Skeleton2D")
-polygon = PackedVector2Array(104.291, 622.429, 651.716, 621.662, 926.579, 642.392, 941.167, 759.861, 650.948, 790.572, 102.756, 789.037)
-uv = PackedVector2Array(104.291, 622.429, 651.716, 621.662, 926.579, 642.392, 941.167, 759.861, 650.948, 790.572, 102.756, 789.037)
-bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Arm", PackedFloat32Array(1, 1, 1, 1, 1, 1), "Wrist/Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0), "Wrist/Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
+polygon = PackedVector2Array(460.76, 662.519, 1562.55, 654.418, 1756.99, 658.468, 1848.13, 680.747, 1854.2, 812.395, 1787.37, 836.7, 1564.58, 850.877, 468.861, 850.877)
+uv = PackedVector2Array(460.76, 662.519, 1562.55, 654.418, 1756.99, 658.468, 1848.13, 680.747, 1854.2, 812.395, 1787.37, 836.7, 1564.58, 850.877, 468.861, 850.877)
+bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Arm", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "Wrist/Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Wrist/FlyingHand1", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Wrist/FlyingHand1/FlyingHand2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "Wrist/FlyingHand1/FlyingHand2/FlyingHand3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="WalkingHand" type="Node2D" parent="Sprites"]
 
