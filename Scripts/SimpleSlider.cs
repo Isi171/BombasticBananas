@@ -1,6 +1,6 @@
 using Godot;
 
-namespace BombasticBananas.Scripts.Controller
+namespace BombasticBananas.Scripts
 {
     public partial class SimpleSlider : RigidBody2D
     {

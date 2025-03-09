@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci6qpmx3egr2r"]
 
-[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_i277x"]
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/SimpleSlider.cs" id="1_i277x"]
 [ext_resource type="Texture2D" uid="uid://beg4hgceajby6" path="res://Sprites/bushes.png" id="1_upxov"]
 
 [node name="bushes" type="RigidBody2D"]

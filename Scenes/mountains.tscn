@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdjgwkcdwsrtf"]
 
-[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_4t1fn"]
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/SimpleSlider.cs" id="1_4t1fn"]
 [ext_resource type="Texture2D" uid="uid://bq4j7kyvic888" path="res://Sprites/mountains1.png" id="1_qak3t"]
 
 [node name="mountains" type="RigidBody2D"]

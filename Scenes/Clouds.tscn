@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7th5yd6wkoep"]
 
-[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_fl6ll"]
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/SimpleSlider.cs" id="1_fl6ll"]
 [ext_resource type="Texture2D" uid="uid://ch2yed2wlw2nu" path="res://Sprites/Clouds.png" id="2_1svr6"]
 
 [node name="Clouds" type="RigidBody2D"]

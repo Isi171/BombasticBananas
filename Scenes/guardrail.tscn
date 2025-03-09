@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://biscj62u5vfcx"]
 
-[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_eu1ut"]
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/SimpleSlider.cs" id="1_eu1ut"]
 [ext_resource type="Texture2D" uid="uid://b04vjn55pfs3w" path="res://Sprites/guardRail.png" id="1_fgf03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q6dc"]
