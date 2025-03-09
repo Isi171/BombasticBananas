@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=26 format=3 uid="uid://bkdjtp36jnfur"]
 
 [ext_resource type="Texture2D" uid="uid://dbhbyoq5c0pgi" path="res://Sprites/sky.png" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
@@ -13,6 +13,74 @@
 [ext_resource type="Theme" uid="uid://dtr7fnqreioqj" path="res://Fonts/text.tres" id="9_bvt00"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingers.tscn" id="9_qxfql"]
 [ext_resource type="AudioStream" uid="uid://c5lfcpgxq5fds" path="res://Sounds/otherside.mp3" id="12_ha31o"]
+[ext_resource type="Texture2D" uid="uid://cu0etrgj6xrw3" path="res://Sprites/UI/xbox_rt.png" id="13_nngtn"]
+[ext_resource type="Texture2D" uid="uid://dkmqun41i13e5" path="res://Sprites/UI/xbox_rt_outline.png" id="14_vofx3"]
+[ext_resource type="Texture2D" uid="uid://621bjh0x5dkn" path="res://Sprites/UI/xbox_lt_outline.png" id="15_00k4y"]
+[ext_resource type="Texture2D" uid="uid://b6a3u6h7trny1" path="res://Sprites/UI/xbox_lt.png" id="16_3a44l"]
+[ext_resource type="Texture2D" uid="uid://btlt780eponap" path="res://Sprites/UI/xbox_stick_l_up.png" id="17_vofx3"]
+[ext_resource type="Texture2D" uid="uid://dc6qg4d562s34" path="res://Sprites/UI/xbox_stick_l_down.png" id="18_3a44l"]
+[ext_resource type="Texture2D" uid="uid://bdouqdjlmsgld" path="res://Sprites/UI/xbox_stick_l.png" id="19_0cmrb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cmrb"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("13_nngtn")
+}, {
+"duration": 1.5,
+"texture": ExtResource("14_vofx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pnhnk"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("15_00k4y")
+}, {
+"duration": 1.5,
+"texture": ExtResource("16_3a44l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00k4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_vofx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_24uko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_3a44l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gf56v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_0cmrb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Scene" type="Node2D"]
 script = ExtResource("1_oqgf2")
@@ -162,6 +230,126 @@ text = "Press any key to start"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Run" type="Control" parent="Tutorial"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RT" type="AnimatedSprite2D" parent="Tutorial/Run"]
+position = Vector2(-783, 333)
+scale = Vector2(1.75825, 1.75825)
+sprite_frames = SubResource("SpriteFrames_0cmrb")
+autoplay = "default"
+
+[node name="LT" type="AnimatedSprite2D" parent="Tutorial/Run"]
+position = Vector2(-671, 333)
+scale = Vector2(1.75825, 1.75825)
+sprite_frames = SubResource("SpriteFrames_pnhnk")
+autoplay = "default"
+
+[node name="authorsLabel" type="RichTextLabel" parent="Tutorial/Run"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -611.0
+offset_top = 276.0
+offset_right = -111.0
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_bvt00")
+text = "Run"
+fit_content = true
+
+[node name="Jump" type="Control" parent="Tutorial"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RT" type="AnimatedSprite2D" parent="Tutorial/Jump"]
+position = Vector2(-108.736, 333)
+scale = Vector2(1.75825, 1.75825)
+sprite_frames = SubResource("SpriteFrames_00k4y")
+
+[node name="authorsLabel" type="RichTextLabel" parent="Tutorial/Jump"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0002
+offset_top = 276.0
+offset_right = 463.0
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_bvt00")
+text = "Jump"
+fit_content = true
+
+[node name="RT2" type="AnimatedSprite2D" parent="Tutorial/Jump"]
+position = Vector2(415.264, 333)
+scale = Vector2(1.75825, 1.75825)
+sprite_frames = SubResource("SpriteFrames_24uko")
+
+[node name="authorsLabel2" type="RichTextLabel" parent="Tutorial/Jump"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 487.0
+offset_top = 276.0
+offset_right = 987.0
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_bvt00")
+text = "Go Down"
+fit_content = true
+
+[node name="Fly" type="Control" parent="Tutorial"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RT" type="AnimatedSprite2D" parent="Tutorial/Fly"]
+position = Vector2(567.264, -201.736)
+scale = Vector2(1.75825, 1.75825)
+sprite_frames = SubResource("SpriteFrames_gf56v")
+
+[node name="authorsLabel" type="RichTextLabel" parent="Tutorial/Fly"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 639.0
+offset_top = -258.736
+offset_right = 1139.0
+offset_bottom = -58.7361
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_bvt00")
+text = "Fly
+"
+fit_content = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_ha31o")
