@@ -1,0 +1,35 @@
+A Roadtrip Home
+
+---
+
+Run with your fingers over the countryside!
+
+---
+
+Imagine this: you're a child again, it's the sunset, and you're riding in the back of your parents car. You imagine you can run with your fingers over the countryside...
+
+You can jump from the guardrail to the mountains. Then, if you jump high enough in the sky, you can start flying.
+
+Controls:
+
+Controller (recommended)
+
+* Run: alternate pressing RT / LT very fast;
+* Jump: slide up with the left analog stick;
+* Go down from the mountains: slide down with the left analog stick;
+* When flying: use the left analog stick to move around.
+
+Keyboard
+
+* Run: alternate pressing A / D or left / right;
+* Jump: W or up;
+* Go down from the mountains: S or down;
+* When flying: use WASD or arrow keys to move around.
+
+---
+
+Platformer
+
+---
+
+singleplayer short atmoshperic cute indie casual relaxing godot
