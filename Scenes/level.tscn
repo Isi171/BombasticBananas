@@ -12,7 +12,6 @@
 [ext_resource type="Theme" uid="uid://b47dpg67ygb3p" path="res://Fonts/titles.tres" id="8_754fn"]
 [ext_resource type="Theme" uid="uid://dtr7fnqreioqj" path="res://Fonts/text.tres" id="9_bvt00"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingers.tscn" id="9_qxfql"]
-[ext_resource type="AudioStream" uid="uid://c5lfcpgxq5fds" path="res://Sounds/otherside.mp3" id="12_ha31o"]
 [ext_resource type="Texture2D" uid="uid://cu0etrgj6xrw3" path="res://Sprites/UI/xbox_rt.png" id="13_nngtn"]
 [ext_resource type="Texture2D" uid="uid://dkmqun41i13e5" path="res://Sprites/UI/xbox_rt_outline.png" id="14_vofx3"]
 [ext_resource type="Texture2D" uid="uid://621bjh0x5dkn" path="res://Sprites/UI/xbox_lt_outline.png" id="15_00k4y"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://btlt780eponap" path="res://Sprites/UI/xbox_stick_l_up.png" id="17_vofx3"]
 [ext_resource type="Texture2D" uid="uid://dc6qg4d562s34" path="res://Sprites/UI/xbox_stick_l_down.png" id="18_3a44l"]
 [ext_resource type="Texture2D" uid="uid://bdouqdjlmsgld" path="res://Sprites/UI/xbox_stick_l.png" id="19_0cmrb"]
+[ext_resource type="AudioStream" uid="uid://dwhg5fb7x1boq" path="res://Sounds/no kwestiun 10min.mp3" id="20_3a44l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0cmrb"]
 animations = [{
@@ -353,5 +353,5 @@ text = "Fly
 fit_content = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_ha31o")
+stream = ExtResource("20_3a44l")
 autoplay = true
