@@ -10,8 +10,6 @@ namespace BombasticBananas.Scripts.Controller
 		private Control JumpUI;
 
 		private bool isOnMainMenu;
-		private Tween tweenUI;
-
 
 		public override void _Ready()
 		{
@@ -20,8 +18,6 @@ namespace BombasticBananas.Scripts.Controller
 			RunUI = GetNode<Control>("Tutorial/Run");
 			JumpUI = GetNode<Control>("Tutorial/Jump");
 			isOnMainMenu = true;
-			
-			tweenUI = GetTree().CreateTween();
 		}
 
 		public override void _Process(double delta)
@@ -33,7 +29,7 @@ namespace BombasticBananas.Scripts.Controller
 				fingers.ProcessMode = ProcessModeEnum.Inherit;
 				fingers.Visible = true;
 				
-				tweenUI = CreateTween();
+				Tween tweenUI = GetTree().CreateTween();
 				tweenUI.TweenProperty(RunUI, "modulate", new Color(1,1,1,1), .5f);
 				tweenUI.TweenInterval(4f);
 				tweenUI.TweenProperty(RunUI, "modulate", new Color(1,1,1,0), 1.5f);
