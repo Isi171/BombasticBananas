@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b51n4pq1b3e5w"]
+[gd_scene load_steps=10 format=3 uid="uid://b51n4pq1b3e5w"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dyo8khv8idfc1" path="res://Materials/Frictionless.tres" id="1_g28yq"]
 [ext_resource type="Script" uid="uid://dmr8665cduscl" path="res://Scripts/Controller/MovementController.cs" id="1_pnwhw"]
 [ext_resource type="AudioStream" uid="uid://cqry0kk8sw32h" path="res://Sounds/tap1.mp3" id="4_cpiwb"]
 [ext_resource type="PackedScene" uid="uid://dnrjaa3mo656w" path="res://Scenes/Fingersvisuals.tscn" id="4_nggkc"]
 [ext_resource type="AudioStream" uid="uid://dk0skkbowypwr" path="res://Sounds/tap2.mp3" id="5_5se3o"]
+[ext_resource type="AudioStream" uid="uid://ddd40mpa03om5" path="res://Sounds/Winds.mp3" id="6_5se3o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd0rc"]
 radius = 116.0
@@ -43,3 +44,8 @@ shape = SubResource("RectangleShape2D_80m3m")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_buuw7")
+
+[node name="FlySounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5se3o")
+volume_db = -60.0
+autoplay = true

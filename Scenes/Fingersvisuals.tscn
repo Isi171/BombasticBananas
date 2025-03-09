@@ -8,15 +8,19 @@ bone2d_node = NodePath("Wrist/Arm")
 target_nodepath = NodePath("../ArmTarget")
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_tehrt"]
-enabled = false
 target_nodepath = NodePath("../FlyTarget")
-jiggle_data_chain_length = 2
-joint_data/0/bone_index = 0
-joint_data/0/bone2d_node = NodePath("")
+jiggle_data_chain_length = 3
+stiffness = 4.0
+damping = 0.9
+joint_data/0/bone_index = 5
+joint_data/0/bone2d_node = NodePath("Wrist/FlyingHand1")
 joint_data/0/override_defaults = false
-joint_data/1/bone_index = 0
-joint_data/1/bone2d_node = NodePath("Wrist")
+joint_data/1/bone_index = 6
+joint_data/1/bone2d_node = NodePath("Wrist/FlyingHand1/FlyingHand2")
 joint_data/1/override_defaults = false
+joint_data/2/bone_index = 7
+joint_data/2/bone2d_node = NodePath("Wrist/FlyingHand1/FlyingHand2/FlyingHand3")
+joint_data/2/override_defaults = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_2hnb4"]
 enabled = true
@@ -31,39 +35,36 @@ top_level = true
 position = Vector2(-800, -1700)
 
 [node name="FlyTarget" type="Marker2D" parent="."]
-top_level = true
-position = Vector2(769, -7)
+position = Vector2(800, -80)
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
 modification_stack = SubResource("SkeletonModificationStack2D_2hnb4")
 
 [node name="Wrist" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(-212, -105)
-rotation = 0.401426
 scale = Vector2(0.999983, 0.999983)
-rest = Transform2D(0.920551, 0.390601, -0.390601, 0.920551, -212, -105)
+rest = Transform2D(0.999983, 0, 0, 0.999983, -212, -105)
 auto_calculate_length_and_angle = false
 length = 550.0
 bone_angle = 0.0
 
 [node name="Arm" type="Bone2D" parent="Skeleton2D/Wrist"]
-rest = Transform2D(-0.689948, -0.723859, 0.723859, -0.689948, 0, 0)
+rest = Transform2D(-0.345905, -0.938297, 0.938297, -0.345905, 0, 0)
 auto_calculate_length_and_angle = false
 length = 500.0
 bone_angle = 0.0
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Hand" type="Bone2D" parent="Skeleton2D/Wrist"]
-position = Vector2(203.031, -7.93465)
-rotation = -0.401288
+position = Vector2(191.003, 70.0012)
 scale = Vector2(1.00001, 1.00001)
-rest = Transform2D(0.920567, -0.390608, 0.390608, 0.920567, 203.031, -7.93465)
+rest = Transform2D(1.00001, 0, 0, 1.00001, 191.003, 70.0012)
 
 [node name="Index" type="Bone2D" parent="Skeleton2D/Wrist/Hand"]
 position = Vector2(18, 33)
 rotation = -0.00174533
 scale = Vector2(0.999999, 0.999999)
-rest = Transform2D(1, 0, 0, 1, 18, 33)
+rest = Transform2D(0.999997, -0.00174533, 0.00174533, 0.999997, 18, 33)
 auto_calculate_length_and_angle = false
 length = 200.0
 bone_angle = 63.0
@@ -71,10 +72,31 @@ bone_angle = 63.0
 [node name="Fuck" type="Bone2D" parent="Skeleton2D/Wrist/Hand"]
 position = Vector2(11, 35)
 rotation = 0.304056
-rest = Transform2D(1, 0, 0, 1, 11, 35)
+rest = Transform2D(0.95413, 0.299393, -0.299393, 0.95413, 11, 35)
 auto_calculate_length_and_angle = false
 length = 220.0
 bone_angle = 85.0
+
+[node name="FlyingHand1" type="Bone2D" parent="Skeleton2D/Wrist"]
+position = Vector2(28.4305, 18.3505)
+rotation = 0.368938
+scale = Vector2(0.999993, 0.999993)
+rest = Transform2D(0.932704, 0.360622, -0.360622, 0.932704, 28.4305, 18.3505)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="FlyingHand2" type="Bone2D" parent="Skeleton2D/Wrist/FlyingHand1"]
+position = Vector2(187.369, -73.0152)
+rest = Transform2D(1, 0, 0, 1, 187.369, -73.0152)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="FlyingHand3" type="Bone2D" parent="Skeleton2D/Wrist/FlyingHand1/FlyingHand2"]
+position = Vector2(124.913, -48.6768)
+rotation = -0.353049
+rest = Transform2D(0.938323, -0.345761, 0.345761, 0.938323, 124.913, -48.6768)
+auto_calculate_length_and_angle = false
+length = 100.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Sprites" type="Node2D" parent="."]
 modulate = Color(0.666569, 0.666569, 0.666569, 1)
@@ -128,4 +150,4 @@ texture = ExtResource("1_cxod0")
 skeleton = NodePath("../../../Skeleton2D")
 polygon = PackedVector2Array(1053.3, 479.662, 1062.8, 444.575, 1090.58, 412.412, 1144.67, 404.371, 1200.23, 406.564, 1251.39, 404.371, 1330.34, 410.219, 1381.51, 412.412, 1460.46, 420.452, 1532.09, 424.107, 1578.14, 441.651, 1589.11, 486.972, 1570.83, 520.597, 1531.36, 533.024, 1465.57, 528.638, 1399.05, 520.597, 1351.54, 535.948, 1309.14, 548.375, 1255.05, 546.182, 1205.34, 538.141, 1163.68, 533.024, 1119.09, 545.451, 1075.23, 533.755, 1051.84, 503.054)
 uv = PackedVector2Array(1053.3, 479.662, 1062.8, 444.575, 1090.58, 412.412, 1144.67, 404.371, 1200.23, 406.564, 1251.39, 404.371, 1330.34, 410.219, 1381.51, 412.412, 1460.46, 420.452, 1532.09, 424.107, 1578.14, 441.651, 1589.11, 486.972, 1570.83, 520.597, 1531.36, 533.024, 1465.57, 528.638, 1399.05, 520.597, 1351.54, 535.948, 1309.14, 548.375, 1255.05, 546.182, 1205.34, 538.141, 1163.68, 533.024, 1119.09, 545.451, 1075.23, 533.755, 1051.84, 503.054)
-bones = ["Wrist", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Wrist/Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+bones = ["Wrist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Arm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Index", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/Hand/Fuck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Wrist/FlyingHand1", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1), "Wrist/FlyingHand1/FlyingHand2", PackedFloat32Array(0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0), "Wrist/FlyingHand1/FlyingHand2/FlyingHand3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)]

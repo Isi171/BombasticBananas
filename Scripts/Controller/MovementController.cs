@@ -33,6 +33,7 @@ namespace BombasticBananas.Scripts.Controller
 		private const int StopFlyingBelowAltitude = 0;
 		private Vector2 CurrentDir;
 		private float WindForce = -500f;
+		private Marker2D FlyHandTarget;
 
 		private Bone2D index;
 		private Bone2D fuck;
@@ -40,8 +41,10 @@ namespace BombasticBananas.Scripts.Controller
 		private Node2D FlyingHand;
 		private Tween tween;
 		private Tween tweenArm;
+		private Tween tweenSound;
 		
 		private AudioStreamPlayer2D FingerTap;
+		private AudioStreamPlayer2D WindSound;
 
 		public override void _Ready()
 		{
@@ -52,9 +55,12 @@ namespace BombasticBananas.Scripts.Controller
 			WalkingHand = GetNode<Node2D>("Visuals/Sprites/WalkingHand");
 			FlyingHand = GetNode<Node2D>("Visuals/Sprites/FlyingHand");
 			FingerTap = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+			WindSound = GetNode<AudioStreamPlayer2D>("FlySounds");
+			FlyHandTarget = GetNode<Marker2D>("Visuals/FlyTarget");
 			
 			tween = GetTree().CreateTween();
 			tweenArm = GetTree().CreateTween();
+			tweenSound = GetTree().CreateTween();
 			
 		}
 
@@ -113,6 +119,10 @@ namespace BombasticBananas.Scripts.Controller
 					tweenArm.Kill(); 
 					tweenArm = CreateTween();
 					tweenArm.TweenProperty(GetNode<Marker2D>("Visuals/ArmTarget"), "global_position", new Vector2(-1600,-1000), 0.5f);
+					
+					tweenSound.Kill(); 
+					tweenSound = CreateTween();
+					tweenSound.TweenProperty(WindSound, "volume_db", 0, 0.5f);
 				}
 
 				GravityScale = 0;
@@ -130,6 +140,11 @@ namespace BombasticBananas.Scripts.Controller
 					tweenArm.Kill(); 
 					tweenArm = CreateTween();
 					tweenArm.TweenProperty(GetNode<Marker2D>("Visuals/ArmTarget"), "global_position", new Vector2(-800,-1700), 0.5f);
+					
+					tweenSound.Kill(); 
+					tweenSound = CreateTween();
+					tweenSound.TweenProperty(WindSound, "volume_db", -10, 2f);
+					tweenSound.TweenProperty(WindSound, "pitch_scale", 1.0, 1f);
 				}
 
 				GravityScale = 1;
@@ -147,11 +162,17 @@ namespace BombasticBananas.Scripts.Controller
 		
 		private void Fly()
 		{
+			//movement
 			CurrentDir = Input.GetVector("FlyLeft", "FlyRight", "FlyUp", "FlyDown");
 			float sail = CurrentDir.Y * WindForce;
 			Vector2 ModifiedForce = new Vector2(CurrentDir.X * 300 - Mathf.Abs(sail) -50, - sail);
-			
 			ApplyForce(ModifiedForce);
+			
+			//Animation
+			FlyHandTarget.Position = new Vector2(FlyHandTarget.Position.X, CurrentDir.Y * 500 - 80);
+			
+			//Audio
+			WindSound.PitchScale = 1.0f + CurrentDir.Y * -0.5f;
 			return;
 		}
 

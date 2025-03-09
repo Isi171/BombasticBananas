@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkdjtp36jnfur"]
+[gd_scene load_steps=14 format=3 uid="uid://bkdjtp36jnfur"]
 
 [ext_resource type="Texture2D" uid="uid://dbhbyoq5c0pgi" path="res://Sprites/sky.png" id="1_0f350"]
 [ext_resource type="Texture2D" uid="uid://dmh1d8ean8b4n" path="res://Sprites/carFrame.png" id="1_81xng"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdjgwkcdwsrtf" path="res://Scenes/mountains.tscn" id="3_0f350"]
 [ext_resource type="PackedScene" uid="uid://ht164w5fn0wb" path="res://Scenes/horizontalBarrier.tscn" id="3_oqgf2"]
 [ext_resource type="PackedScene" uid="uid://ci6qpmx3egr2r" path="res://Scenes/bushes.tscn" id="4_8c0lf"]
+[ext_resource type="PackedScene" uid="uid://c7th5yd6wkoep" path="res://Scenes/Clouds.tscn" id="6_pa6b8"]
 [ext_resource type="Theme" uid="uid://b47dpg67ygb3p" path="res://Fonts/titles.tres" id="8_754fn"]
 [ext_resource type="Theme" uid="uid://dtr7fnqreioqj" path="res://Fonts/text.tres" id="9_bvt00"]
 [ext_resource type="PackedScene" uid="uid://b51n4pq1b3e5w" path="res://Scenes/fingers.tscn" id="9_qxfql"]
@@ -36,6 +37,11 @@ rotation = 0.158326
 [node name="mountains" parent="." instance=ExtResource("3_0f350")]
 position = Vector2(0, 410)
 Speed = -200.0
+
+[node name="Clouds" parent="." instance=ExtResource("6_pa6b8")]
+visible = false
+position = Vector2(28, -82)
+Speed = -250.0
 
 [node name="bushes" parent="." instance=ExtResource("4_8c0lf")]
 position = Vector2(15, 570)

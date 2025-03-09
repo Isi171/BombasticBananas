@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7th5yd6wkoep"]
+
+[ext_resource type="Script" uid="uid://c71n7nur5k0hf" path="res://Scripts/Controller/SimpleSlider.cs" id="1_fl6ll"]
+[ext_resource type="Texture2D" uid="uid://ch2yed2wlw2nu" path="res://Sprites/Clouds.png" id="2_1svr6"]
+
+[node name="Clouds" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 4
+mass = 9.22337e+18
+gravity_scale = 0.0
+script = ExtResource("1_fl6ll")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1svr6")
+
+[node name="Sprite2Dextra" type="Sprite2D" parent="."]
+position = Vector2(1920, 0)
+texture = ExtResource("2_1svr6")
